@@ -4,7 +4,7 @@ import Head from 'next/head';
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
 import createVideoLink from '../shared/video';
 
-let ID = 0;
+let ID = 1;
 
 export default function Home() {
     const [ videoLink, setVideoLink ] = useState('');
@@ -27,6 +27,7 @@ export default function Home() {
             return;
         }
 
+        let website = '';
         if (isYouTubeVideoRegex.test(videoLink)) {
             website = 'YouTube';
         }
@@ -43,6 +44,15 @@ export default function Home() {
         cloneVideos.push(videoObject);
         setVideos(cloneVideos);
         setVideoLink('');
+    }
+
+    const handleRemoveVideo = (videoID) => {
+        const cloneVideos = JSON.parse(JSON.stringify(videos));
+
+        const videoIndex = cloneVideos.findIndex(video => video.ID === videoID);
+        cloneVideos.splice(videoIndex, 1);
+
+        setVideos(cloneVideos);
     }
 
     return (
@@ -80,7 +90,9 @@ export default function Home() {
                     <div
                         key={ video.ID }
                         className="mr-3 mb-1 video-embed-container">
-                        <button className="button-red">
+                        <button
+                            onClick={ () => handleRemoveVideo(video.ID) }
+                            className="button-red">
                             x
                         </button>
                         <EmbedVideo
