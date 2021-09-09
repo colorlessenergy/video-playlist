@@ -9,29 +9,36 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-        <form>
-            <label htmlFor="videoLink">
-                add video link
-            </label>
-            <input
-                type="text"
-                id="videoLink" />
-            <button>
+      <div className="container">
+        <form className="flex align-items-end">
+            <div className="flex flex-direction-column align-items-start add-video-link-input-container">
+                <label htmlFor="videoLink">
+                    add video link
+                </label>
+                <input
+                    className="add-video-link-input"
+                    type="text"
+                    id="videoLink"
+                    placeholder="video link" />
+            </div>
+            <button className="add-video-link-button">
                 +
             </button>
         </form>
 
-        <div>
-            <div>
-                <button>
+        <div className="mt-2 flex flex-wrap justify-content-between">
+            <div className="mr-3 mb-1 video-placeholder-container">
+                <button className="button-red">
                     x
                 </button>
-                <div>
+
+                <div className="video-placeholder">
 
                 </div>
-                <p>this is a title</p>
+                <p className="text-large">this is a title</p>
             </div>
         </div>
+      </div>
     </div>
   );
 }
