@@ -1,0 +1,33 @@
+@use 'variables' as *;
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.mt-2 {
+  margin-top: $space-medium;
+}
+
+.mb-1 {
+  margin-bottom: $space-small;
+}
