@@ -20,8 +20,7 @@ export default function Home() {
             return;
         }
 
-        let website = '';
-        const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z]+/;
+        const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z0-9]+/;
         const isValidVideoLink = isYouTubeVideoRegex.test(videoLink);
         if (!isValidVideoLink) {
             alert('invalid video link');
