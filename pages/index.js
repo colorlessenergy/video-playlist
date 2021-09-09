@@ -23,9 +23,9 @@ export default function Home() {
 
         <div>
             <div>
-                <div>
+                <button>
                     x
-                </div>
+                </button>
                 <div>
 
                 </div>
