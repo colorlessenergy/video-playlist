@@ -1,6 +1,11 @@
 import { useState } from 'react';
 import Head from 'next/head';
 
+import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
+import createVideoLink from '../shared/video';
+
+let ID = 0;
+
 export default function Home() {
     const [ videoLink, setVideoLink ] = useState('');
     const handleVideoLinkInputChange = (event) => {
@@ -15,14 +20,28 @@ export default function Home() {
             return;
         }
 
-        const isYoutubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z]+/;
-        if (!isYoutubeVideoRegex.test(videoLink)) {
-            alert('invalid youtube link');
+        let website = '';
+        const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z]+/;
+        const isValidVideoLink = isYouTubeVideoRegex.test(videoLink);
+        if (!isValidVideoLink) {
+            alert('invalid video link');
             return;
         }
 
-        const cloneVideos = JSON.parse(JSON.stringify(videos));
-        cloneVideos.push(videoLink);
+        if (isYouTubeVideoRegex.test(videoLink)) {
+            website = 'YouTube';
+        }
+
+        let embedVideoLink = createVideoLink({ videoLink, website });
+        let cloneVideos = JSON.parse(JSON.stringify(videos));
+        ID += 1;
+        const videoObject = {
+            ID,
+            link: embedVideoLink,
+            website: website
+        }
+
+        cloneVideos.push(videoObject);
         setVideos(cloneVideos);
         setVideoLink('');
     }
@@ -57,17 +76,21 @@ export default function Home() {
         </form>
 
         <div className="mt-2 flex flex-wrap justify-content-between">
-            <div className="mr-3 mb-1 video-placeholder-container">
-                <button className="button-red">
-                    x
-                </button>
-
-                <div className="video-placeholder">
-
-                </div>
-                <p className="text-large">this is a title</p>
-            </div>
-        </div>
+            { videos.map(video => {
+                return (
+                    <div
+                        key={ video.ID }
+                        className="mr-3 mb-1 video-embed-container">
+                        <button className="button-red">
+                            x
+                        </button>
+                        <EmbedVideo
+                            link={ video.link }
+                            website={ video.website } />
+                    </div>
+                );
+            }) }
+       </div>
       </div>
     </div>
   );
