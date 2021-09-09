@@ -7,6 +7,26 @@ export default function Home() {
         setVideoLink(event.target.value)
     }
 
+    let [ videos, setVideos ] = useState([]);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if (videoLink === '') {
+            alert('missing video link');
+            return;
+        }
+
+        const isYoutubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z]+/;
+        if (!isYoutubeVideoRegex.test(videoLink)) {
+            alert('invalid youtube link');
+            return;
+        }
+
+        const cloneVideos = JSON.parse(JSON.stringify(videos));
+        cloneVideos.push(videoLink);
+        setVideos(cloneVideos);
+        setVideoLink('');
+    }
+
     return (
     <div>
       <Head>
@@ -16,7 +36,9 @@ export default function Home() {
       </Head>
 
       <div className="container">
-        <form className="flex align-items-end">
+        <form
+            onSubmit={ handleSubmit }
+            className="flex align-items-end">
             <div className="flex flex-direction-column align-items-start add-video-link-input-container">
                 <label htmlFor="videoLink">
                     add video link
