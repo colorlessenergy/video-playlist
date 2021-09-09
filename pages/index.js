@@ -21,7 +21,8 @@ export default function Home() {
         }
 
         const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z0-9]+/;
-        const isValidVideoLink = isYouTubeVideoRegex.test(videoLink);
+        const isVimeoVideoRegex = /vimeo.com\/[0-9]+/;
+        const isValidVideoLink = isYouTubeVideoRegex.test(videoLink) || isVimeoVideoRegex.test(videoLink);
         if (!isValidVideoLink) {
             alert('invalid video link');
             return;
@@ -30,6 +31,8 @@ export default function Home() {
         let website = '';
         if (isYouTubeVideoRegex.test(videoLink)) {
             website = 'YouTube';
+        } else if (isVimeoVideoRegex.test(videoLink)) {
+            website = 'Vimeo';
         }
 
         let embedVideoLink = createVideoLink({ videoLink, website });
