@@ -1,7 +1,13 @@
+import { useState } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
-  return (
+    const [ videoLink, setVideoLink ] = useState('');
+    const handleVideoLinkInputChange = (event) => {
+        setVideoLink(event.target.value)
+    }
+
+    return (
     <div>
       <Head>
         <title>video playlist</title>
@@ -19,6 +25,8 @@ export default function Home() {
                     className="add-video-link-input"
                     type="text"
                     id="videoLink"
+                    onChange={ handleVideoLinkInputChange }
+                    value={ videoLink }
                     placeholder="video link" />
             </div>
             <button className="add-video-link-button">
