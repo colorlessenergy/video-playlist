@@ -89,6 +89,11 @@ export default function Home() {
             </Head>
 
             <div className="container">
+                <Image
+                    src="/logo.svg"
+                    alt="video playlist logo"
+                    width={ 50 }
+                    height={ 50 } />
                 <form
                     onSubmit={ handleSubmit }
                     className="flex align-items-end">
