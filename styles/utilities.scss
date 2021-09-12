@@ -54,6 +54,11 @@
   margin-bottom: $space-small;
 }
 
+.my-2 {
+  margin-top: $space-medium;
+  margin-bottom: $space-medium;
+}
+
 .circle {
   border-radius: 50%;
 }
@@ -64,4 +69,12 @@
 
 .text-right {
   text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
 }
