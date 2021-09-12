@@ -1,4 +1,4 @@
-export default function createVideoLink ({ videoLink, website }) {
+export function createVideoLink ({ videoLink, website }) {
     if (website === 'YouTube') {
         return createYoutubeVideoEmbedLink(videoLink)
     } else if (website === 'Vimeo') {
@@ -20,4 +20,24 @@ const createVimeoVideoEmbedLink = (videoLink) => {
 
 
     return `https://player.vimeo.com/video/${ vimeoVideoID }`;
+}
+
+export function storeVideoIntoLocalStorage (videoObject) {
+    if (!localStorage.getItem('videos')) {
+        localStorage.setItem('videos', JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem('ID')) {
+        localStorage.setItem('ID', JSON.stringify(0));
+    }
+
+    let ID = JSON.parse(localStorage.getItem('ID'));
+    ID += 1;
+    videoObject.ID = ID;
+
+    let videos = JSON.parse(localStorage.getItem('videos'));
+    videos.push(videoObject);
+
+    localStorage.setItem('videos', JSON.stringify(videos));
+    localStorage.setItem('ID', JSON.stringify(ID));
 }
