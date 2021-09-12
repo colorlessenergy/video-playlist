@@ -151,15 +151,17 @@ export default function Home() {
                     website={ clickedVideo.website }
                     disabled={ false }
                     height={ 390 } />
-                { videos.map(video => {
-                    return (
-                        <EmbedVideo
-                            link={ video.link }
-                            website={ video.website }
-                            disabled={ true }
-                            width={ 400 } />
-                    );
-                })  }
+                <div className="flex overflow-x-scroll">
+                    { videos.map(video => {
+                        return (
+                            <EmbedVideo
+                                link={ video.link }
+                                website={ video.website }
+                                disabled={ true }
+                                width={ 400 } />
+                        );
+                    })  }
+                </div>
             </Modal>
         ) : (null) }
     </div>
