@@ -7,7 +7,7 @@ export default function createVideoLink ({ videoLink, website }) {
 }
 
 const createYoutubeVideoEmbedLink = (videoLink) => {
-    const youTubeVideoIDRegex = /\?v=[a-zA-Z0-9]+/;
+    const youTubeVideoIDRegex = /\?v=[a-zA-Z0-9_]+/;
     let youTubeVideoID = videoLink.match(youTubeVideoIDRegex)[0];
     youTubeVideoID = youTubeVideoID.replace('?v=', '');
 
