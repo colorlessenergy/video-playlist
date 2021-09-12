@@ -103,10 +103,12 @@ export default function Home() {
                             className="button-red">
                             x
                         </button>
-                        <EmbedVideo
-                            link={ video.link }
-                            website={ video.website }
-                            disabled={ true } />
+                        <div onClick={ () => handleVideoClick(video) }>
+                            <EmbedVideo
+                                link={ video.link }
+                                website={ video.website }
+                                disabled={ true } />
+                        </div>
                     </div>
                 );
             }) }
