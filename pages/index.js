@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
-import { createVideoLink, storeVideoIntoLocalStorage } from '../shared/video';
+import { createVideoLink, getVideosFromLocalStorage, storeVideoIntoLocalStorage } from '../shared/video';
 import Modal from '../shared/components/Modal';
 
 export default function Home() {
@@ -13,6 +13,10 @@ export default function Home() {
     }
 
     let [ videos, setVideos ] = useState([]);
+    useEffect(() => {
+        setVideos(getVideosFromLocalStorage());
+    }, typeof localStorage !== 'undefined' ? [localStorage.getItem('videos')] : [])
+
     const handleSubmit = (event) => {
         event.preventDefault();
         if (videoLink === '') {
