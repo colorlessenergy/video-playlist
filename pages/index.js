@@ -100,11 +100,12 @@ export default function Home() {
                         </button>
                         <EmbedVideo
                             link={ video.link }
-                            website={ video.website } />
+                            website={ video.website }
+                            disabled={ true } />
                     </div>
                 );
             }) }
-       </div>
+        </div>
       </div>
     </div>
   );
