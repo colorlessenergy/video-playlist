@@ -22,7 +22,7 @@ export default function Home() {
             return;
         }
 
-        const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z0-9_]+/;
+        const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z0-9_-]+/;
         const isVimeoVideoRegex = /vimeo.com\/[0-9]+/;
         const isValidVideoLink = isYouTubeVideoRegex.test(videoLink) || isVimeoVideoRegex.test(videoLink);
         if (!isValidVideoLink) {
