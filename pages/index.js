@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import Head from 'next/head';
+import Image from 'next/image';
 
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
 import createVideoLink from '../shared/video';
+import Modal from '../shared/components/Modal';
 
 let ID = 1;
 
@@ -61,7 +63,10 @@ export default function Home() {
     let [ clickedVideo, setClickedVideo ] = useState(null);
     const handleVideoClick = (video) => {
         setClickedVideo(video);
+        setIsModalOpen(true)
     }
+
+    let [ isModalOpen, setIsModalOpen ] = useState(false);
 
     return (
     <div>
@@ -114,6 +119,42 @@ export default function Home() {
             }) }
         </div>
       </div>
+        { isModalOpen ? (
+            <Modal isOpen={ isModalOpen }>
+                <div className="flex justify-content-between align-items-center mb-1">
+                    { clickedVideo.website === 'YouTube' ? (
+                        <Image
+                            src="/youtube.svg"
+                            alt="YouTube logo"
+                            width={ 25 }
+                            height={ 25 } />
+                    ) : (
+                        <Image
+                            src="/vimeo.svg"
+                            alt="Vimeo logo"
+                            width={ 25 }
+                            height={ 25 } />
+                    ) }
+                    <button className="button-red circle">
+                        x
+                    </button>
+                </div>
+                <EmbedVideo
+                    link={ clickedVideo.link }
+                    website={ clickedVideo.website }
+                    disabled={ false }
+                    height={ 390 } />
+                { videos.map(video => {
+                    return (
+                        <EmbedVideo
+                            link={ video.link }
+                            website={ video.website }
+                            disabled={ true }
+                            width={ 400 } />
+                    );
+                })  }
+            </Modal>
+        ) : (null) }
     </div>
   );
 }
