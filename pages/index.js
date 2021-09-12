@@ -114,6 +114,20 @@ export default function Home() {
                     </button>
                 </form>
 
+                { videos.length === 0 ? (
+                    <div className="text-center">
+                        <p className="text-large text-bold my-2">
+                            add a video
+                        </p>
+
+                        <Image
+                            src="/happy.svg"
+                            alt="happy emoji"
+                            width={ 100 }
+                            height={ 100 } />
+                    </div>
+                ) : (null) }
+
                 <div className="mt-2 flex flex-wrap justify-content-between">
                     { videos.map(video => {
                         return (
