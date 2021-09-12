@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useReducer, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
-import { createVideoLink, getVideosFromLocalStorage, storeVideoIntoLocalStorage } from '../shared/video';
+import { createVideoLink, deleteVideoFromLocalStorage, getVideosFromLocalStorage, storeVideoIntoLocalStorage } from '../shared/video';
 import Modal from '../shared/components/Modal';
 
 export default function Home() {
@@ -55,13 +55,10 @@ export default function Home() {
         setVideoLink('');
     }
 
+    const [ ignored, forceUpdate ] = useReducer(x => x + 1, 0);
     const handleRemoveVideo = (videoID) => {
-        const cloneVideos = JSON.parse(JSON.stringify(videos));
-
-        const videoIndex = cloneVideos.findIndex(video => video.ID === videoID);
-        cloneVideos.splice(videoIndex, 1);
-
-        setVideos(cloneVideos);
+        deleteVideoFromLocalStorage(videoID);
+        forceUpdate();
     }
 
     let [ clickedVideo, setClickedVideo ] = useState(null);

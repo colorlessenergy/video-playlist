@@ -54,3 +54,11 @@ export function storeVideoIntoLocalStorage (videoObject) {
     localStorage.setItem('videos', JSON.stringify(videos));
     localStorage.setItem('ID', JSON.stringify(ID));
 }
+
+export function deleteVideoFromLocalStorage (videoID) {
+    let videos = JSON.parse(localStorage.getItem('videos'));
+    const videoIndex = videos.findIndex(video => video.ID === videoID);
+    videos.splice(videoIndex, 1);
+
+    localStorage.setItem('videos', JSON.stringify(videos));
+}
