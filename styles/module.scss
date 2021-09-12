@@ -39,3 +39,27 @@
 .video-embed-container {
   width: 30%;
 }
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+}
+
+.modal-content {
+  padding: 10px;
+  min-height: 200px;
+  width: 100%;
+}
+
+body.modal-is-open {
+  overflow: hidden;
+}
