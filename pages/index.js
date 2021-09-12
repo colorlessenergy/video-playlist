@@ -22,6 +22,12 @@ export default function Home() {
             return;
         }
 
+        const isVideoNew = videos.findIndex(video => video.originalLink === videoLink);
+        if (isVideoNew !== -1) {
+            alert('this video is already in the playlist');
+            return;
+        }
+
         const isYouTubeVideoRegex = /youtube.com\/watch\?v=[a-zA-Z0-9_-]+/;
         const isVimeoVideoRegex = /vimeo.com\/[0-9]+/;
         const isValidVideoLink = isYouTubeVideoRegex.test(videoLink) || isVimeoVideoRegex.test(videoLink);
@@ -43,6 +49,7 @@ export default function Home() {
         const videoObject = {
             ID,
             link: embedVideoLink,
+            originalLink: videoLink,
             website: website
         }
 
