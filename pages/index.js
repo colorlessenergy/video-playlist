@@ -3,10 +3,8 @@ import Head from 'next/head';
 import Image from 'next/image';
 
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
-import createVideoLink from '../shared/video';
+import { createVideoLink, storeVideoIntoLocalStorage } from '../shared/video';
 import Modal from '../shared/components/Modal';
-
-let ID = 1;
 
 export default function Home() {
     const [ videoLink, setVideoLink ] = useState('');
@@ -44,17 +42,12 @@ export default function Home() {
         }
 
         let embedVideoLink = createVideoLink({ videoLink, website });
-        let cloneVideos = JSON.parse(JSON.stringify(videos));
-        ID += 1;
         const videoObject = {
-            ID,
             link: embedVideoLink,
             originalLink: videoLink,
             website: website
         }
-
-        cloneVideos.push(videoObject);
-        setVideos(cloneVideos);
+        storeVideoIntoLocalStorage(videoObject);
         setVideoLink('');
     }
 
