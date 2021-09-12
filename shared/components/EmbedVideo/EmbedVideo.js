@@ -1,6 +1,8 @@
-const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%", isPlaying }) => {
+const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%", isPlaying, onClick }) => {
     return (
-        <div className="position-relative">
+        <div
+            onClick={ onClick }
+            className="position-relative">
             <iframe
                 width={ width }
                 height={ height }

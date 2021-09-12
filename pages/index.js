@@ -113,12 +113,11 @@ export default function Home() {
                             className="button-red">
                             x
                         </button>
-                        <div onClick={ () => handleVideoClick(video) }>
-                            <EmbedVideo
-                                link={ video.link }
-                                website={ video.website }
-                                disabled={ true } />
-                        </div>
+                        <EmbedVideo
+                            link={ video.link }
+                            website={ video.website }
+                            disabled={ true }
+                            onClick={ () => handleVideoClick(video) } />
                     </div>
                 );
             }) }
@@ -159,14 +158,13 @@ export default function Home() {
                         }
 
                         return (
-                            <div onClick={ () => setClickedVideo(video) }>
-                                <EmbedVideo
-                                    link={ video.link }
-                                    website={ video.website }
-                                    disabled={ true }
-                                    width={ 400 }
-                                    isPlaying={ isPlaying } />
-                            </div>
+                            <EmbedVideo
+                                link={ video.link }
+                                website={ video.website }
+                                disabled={ true }
+                                width={ 400 }
+                                isPlaying={ isPlaying }
+                                onClick={ () => setClickedVideo(video) } />
                         );
                     })  }
                 </div>
