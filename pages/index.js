@@ -108,11 +108,13 @@ export default function Home() {
                     <div
                         key={ video.ID }
                         className="mr-3 mb-1 video-embed-container">
-                        <button
-                            onClick={ () => handleRemoveVideo(video.ID) }
-                            className="button-red">
-                            x
-                        </button>
+                        <div className="text-right">
+                            <button
+                                onClick={ () => handleRemoveVideo(video.ID) }
+                                className="button-red">
+                                x
+                            </button>
+                        </div>
                         <EmbedVideo
                             link={ video.link }
                             website={ video.website }
