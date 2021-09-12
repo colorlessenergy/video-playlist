@@ -1,9 +1,9 @@
-const EmbedVideo = ({ link, website, disabled }) => {
+const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%" }) => {
     return (
         <div className="position-relative">
             <iframe
-                width="100%"
-                height="200"
+                width={ width }
+                height={ height }
                 src={ link }
                 title={ `${ website } video player` }
                 frameBorder="0"
