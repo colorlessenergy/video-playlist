@@ -153,13 +153,19 @@ export default function Home() {
                     height={ 390 } />
                 <div className="flex overflow-x-scroll">
                     { videos.map(video => {
+                        let isPlaying = false;
+                        if (video.ID === clickedVideo.ID) {
+                            isPlaying = true;
+                        }
+
                         return (
                             <div onClick={ () => setClickedVideo(video) }>
                                 <EmbedVideo
                                     link={ video.link }
                                     website={ video.website }
                                     disabled={ true }
-                                    width={ 400 } />
+                                    width={ 400 }
+                                    isPlaying={ isPlaying } />
                             </div>
                         );
                     })  }

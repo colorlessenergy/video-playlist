@@ -1,4 +1,4 @@
-const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%" }) => {
+const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%", isPlaying }) => {
     return (
         <div className="position-relative">
             <iframe
@@ -10,7 +10,13 @@ const EmbedVideo = ({ link, website, disabled, height = "200", width = "100%" })
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen></iframe>
                 { disabled ? (
-                    <div className="disabled"></div>
+                    <div className="disabled">
+                        { isPlaying ? (
+                            <div className="is-playing-container">
+                                is playing
+                            </div>
+                        ) : (null) }
+                    </div>
                 ) : (null) }
         </div>
     );
