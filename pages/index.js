@@ -150,7 +150,7 @@ export default function Home() {
                     link={ clickedVideo.link }
                     website={ clickedVideo.website }
                     disabled={ false }
-                    height={ 390 } />
+                    height={ 384 } />
                 <div className="flex overflow-x-scroll">
                     { videos.map(video => {
                         let isPlaying = false;
