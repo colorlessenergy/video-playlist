@@ -22,6 +22,19 @@ const createVimeoVideoEmbedLink = (videoLink) => {
     return `https://player.vimeo.com/video/${ vimeoVideoID }`;
 }
 
+
+export function getVideosFromLocalStorage () {
+    if (!localStorage.getItem('videos')) {
+        localStorage.setItem('videos', JSON.stringify([]));
+    }
+
+    if (!localStorage.getItem('ID')) {
+        localStorage.setItem('ID', JSON.stringify(0));
+    }
+
+    return JSON.parse(localStorage.getItem('videos'));
+}
+
 export function storeVideoIntoLocalStorage (videoObject) {
     if (!localStorage.getItem('videos')) {
         localStorage.setItem('videos', JSON.stringify([]));
