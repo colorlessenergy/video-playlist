@@ -184,6 +184,7 @@ export default function Home() {
 
                             return (
                                 <EmbedVideo
+                                    key={ video.ID }
                                     link={ video.link }
                                     website={ video.website }
                                     disabled={ true }
