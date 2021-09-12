@@ -66,6 +66,11 @@ export default function Home() {
         setIsModalOpen(true)
     }
 
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setClickedVideo(null);
+    }
+
     let [ isModalOpen, setIsModalOpen ] = useState(false);
 
     return (
@@ -135,7 +140,9 @@ export default function Home() {
                             width={ 25 }
                             height={ 25 } />
                     ) }
-                    <button className="button-red circle">
+                    <button
+                        onClick={ closeModal }
+                        className="button-red circle">
                         x
                     </button>
                 </div>
