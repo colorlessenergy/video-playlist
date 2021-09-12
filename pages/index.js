@@ -58,6 +58,11 @@ export default function Home() {
         setVideos(cloneVideos);
     }
 
+    let [ clickedVideo, setClickedVideo ] = useState(null);
+    const handleVideoClick = (video) => {
+        setClickedVideo(video);
+    }
+
     return (
     <div>
       <Head>
