@@ -154,11 +154,13 @@ export default function Home() {
                 <div className="flex overflow-x-scroll">
                     { videos.map(video => {
                         return (
-                            <EmbedVideo
-                                link={ video.link }
-                                website={ video.website }
-                                disabled={ true }
-                                width={ 400 } />
+                            <div onClick={ () => setClickedVideo(video) }>
+                                <EmbedVideo
+                                    link={ video.link }
+                                    website={ video.website }
+                                    disabled={ true }
+                                    width={ 400 } />
+                            </div>
                         );
                     })  }
                 </div>
