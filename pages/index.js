@@ -172,7 +172,7 @@ export default function Home() {
                         website={ clickedVideo.website }
                         disabled={ false }
                         height={ 384 } />
-                    <div className={`flex ${ videos.length >= 3 ? ('overflow-x-scroll') : ('') }`}>
+                    <div className="flex overflow-x-scroll">
                         { videos.map(video => {
                             let isPlaying = false;
                             if (video.ID === clickedVideo.ID) {
