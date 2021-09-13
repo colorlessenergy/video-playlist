@@ -1,0 +1,82 @@
+@use 'variables' as *;
+
+.add-video-link-input-container {
+  width: 80%;
+}
+
+.add-video-link-input {
+  border: 2px solid #000000;
+  padding: 5px $space-small;
+  width: 100%;
+
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+}
+
+.add-video-link-button {
+  border: 2px solid #000000;
+  border-radius: 50%;
+  height: 36px;
+  width: 36px;
+  margin-left: $space-small;
+
+  font-size: 20px;
+}
+
+.container {
+  margin: 0 $space-medium;
+  padding-top: $space-medium;
+}
+
+.button-red {
+  min-width: 30px;
+  min-height: 30px;
+
+  background-color: $red;
+  font-size: 20px;
+}
+
+.video-embed-container {
+  width: 100%;
+}
+
+.modal {
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+}
+
+.modal-content {
+  padding: 10px;
+  min-height: 200px;
+  width: 100%;
+}
+
+body.modal-is-open {
+  overflow: hidden;
+}
+
+.is-playing-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: default;
+  font-size: 40px;
+}
+
+.text-large {
+  font-size: 40px;
+}

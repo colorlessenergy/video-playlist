@@ -1,0 +1,80 @@
+@use 'variables' as *;
+
+.position-relative {
+  position: relative;
+}
+
+.disabled {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-direction-column {
+  flex-direction: column;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.d-none {
+  display: none;
+}
+
+.mt-2 {
+  margin-top: $space-medium;
+}
+
+.mb-1 {
+  margin-bottom: $space-small;
+}
+
+.my-2 {
+  margin-top: $space-medium;
+  margin-bottom: $space-medium;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.overflow-x-scroll {
+  overflow-x: scroll;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-bold {
+  font-weight: 700;
+}
