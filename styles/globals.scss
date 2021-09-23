@@ -29,19 +29,9 @@ a {
   }
 }
 
-@media (min-width: 767px) {
-  .video-embed-container {
-    width: 45%;
-  }
-}
-
 @media (min-width: 1200px) {
   .container {
     margin: 0 auto;
     max-width: 1200px;
-  }
-
-  .video-embed-container {
-    width: 30%;
   }
 }
