@@ -156,7 +156,7 @@ export default function Home() {
                                 <div className="text-right">
                                     <button
                                         onClick={ () => handleRemoveVideo(video.ID) }
-                                        className="button-red">
+                                        className="button-red brt-1">
                                         x
                                     </button>
                                 </div>
