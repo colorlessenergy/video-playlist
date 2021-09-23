@@ -120,7 +120,7 @@ export default function Home() {
                 ) : (null) }
                 { clickedVideo ? ( 
                 <Fragment>
-                    <div className="flex justify-content-between align-items-center mb-1">
+                    <div className="flex justify-content-between align-items-center mb-1 mt-1">
                         { clickedVideo.website === 'YouTube' ? (
                             <Image
                                 src="/youtube.svg"
