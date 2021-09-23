@@ -1,10 +1,9 @@
-import { useEffect, useReducer, useState } from 'react';
+import { Fragment, useEffect, useReducer, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 
 import EmbedVideo from '../shared/components/EmbedVideo/EmbedVideo';
 import { createVideoLink, deleteVideoFromLocalStorage, getVideosFromLocalStorage, storeVideoIntoLocalStorage } from '../shared/video';
-import Modal from '../shared/components/Modal';
 
 export default function Home() {
     const [ videoLink, setVideoLink ] = useState('');
@@ -14,7 +13,15 @@ export default function Home() {
 
     let [ videos, setVideos ] = useState([]);
     useEffect(() => {
-        setVideos(getVideosFromLocalStorage());
+        const videos = getVideosFromLocalStorage();
+        setVideos(videos);
+        if (videos.length >= 1) {
+            setClickedVideo(videos[0]);
+        }
+
+        if (videos.length === 0) {
+            setClickedVideo(null);
+        }
     }, typeof localStorage !== 'undefined' ? [localStorage.getItem('videos')] : [])
 
     const handleSubmit = (event) => {
@@ -62,17 +69,6 @@ export default function Home() {
     }
 
     let [ clickedVideo, setClickedVideo ] = useState(null);
-    const handleVideoClick = (video) => {
-        setClickedVideo(video);
-        setIsModalOpen(true)
-    }
-
-    const closeModal = () => {
-        setIsModalOpen(false);
-        setClickedVideo(null);
-    }
-
-    let [ isModalOpen, setIsModalOpen ] = useState(false);
 
     return (
         <div>
@@ -121,32 +117,8 @@ export default function Home() {
                             height={ 100 } />
                     </div>
                 ) : (null) }
-
-                <div className="mt-2 flex flex-wrap justify-content-between">
-                    { videos.map(video => {
-                        return (
-                            <div
-                                key={ video.ID }
-                                className="mr-3 mb-1 video-embed-container">
-                                <div className="text-right">
-                                    <button
-                                        onClick={ () => handleRemoveVideo(video.ID) }
-                                        className="button-red">
-                                        x
-                                    </button>
-                                </div>
-                                <EmbedVideo
-                                    link={ video.link }
-                                    website={ video.website }
-                                    disabled={ true }
-                                    onClick={ () => handleVideoClick(video) } />
-                            </div>
-                        );
-                    }) }
-                </div>
-            </div>
-            { isModalOpen ? (
-                <Modal isOpen={ isModalOpen }>
+                { clickedVideo ? ( 
+                <Fragment>
                     <div className="flex justify-content-between align-items-center mb-1">
                         { clickedVideo.website === 'YouTube' ? (
                             <Image
@@ -161,38 +133,46 @@ export default function Home() {
                                 width={ 25 }
                                 height={ 25 } />
                         ) }
-                        <button
-                            onClick={ closeModal }
-                            className="button-red circle">
-                            x
-                        </button>
                     </div>
                     <EmbedVideo
                         link={ clickedVideo.link }
                         website={ clickedVideo.website }
                         disabled={ false }
                         height={ 384 } />
-                    <div className="flex overflow-x-scroll">
-                        { videos.map(video => {
-                            let isPlaying = false;
-                            if (video.ID === clickedVideo.ID) {
-                                isPlaying = true;
-                            }
+                </Fragment>
+                ) : (null) }
 
-                            return (
+                { videos.length ? (
+                <div className="flex overflow-x-scroll">
+                    { videos.map(video => {
+                        let isPlaying = false;
+                        if (video.ID === clickedVideo.ID) {
+                            isPlaying = true;
+                        }
+
+                        return (
+                            <div key={ video.ID }>
+                                <div className="text-right">
+                                    <button
+                                        onClick={ () => handleRemoveVideo(video.ID) }
+                                        className="button-red">
+                                        x
+                                    </button>
+                                </div>
+
                                 <EmbedVideo
-                                    key={ video.ID }
                                     link={ video.link }
                                     website={ video.website }
                                     disabled={ true }
                                     width={ 400 }
                                     isPlaying={ isPlaying }
                                     onClick={ () => setClickedVideo(video) } />
-                            );
-                        })  }
-                    </div>
-                </Modal>
-            ) : (null) }
+                            </div>
+                        );
+                    })  }
+                </div>
+                ) : (null) }
+            </div>
         </div>
     );
 }

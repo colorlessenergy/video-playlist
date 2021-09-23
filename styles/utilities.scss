@@ -18,10 +18,6 @@
   display: flex;
 }
 
-.flex-wrap {
-  flex-wrap: wrap;
-}
-
 .align-items-start {
   align-items: flex-start;
 }
@@ -46,10 +42,6 @@
   display: none;
 }
 
-.mt-2 {
-  margin-top: $space-medium;
-}
-
 .mb-1 {
   margin-bottom: $space-small;
 }
@@ -57,10 +49,6 @@
 .my-2 {
   margin-top: $space-medium;
   margin-bottom: $space-medium;
-}
-
-.circle {
-  border-radius: 50%;
 }
 
 .overflow-x-scroll {
