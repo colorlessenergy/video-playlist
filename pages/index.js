@@ -15,8 +15,15 @@ export default function Home() {
     useEffect(() => {
         const videos = getVideosFromLocalStorage();
         setVideos(videos);
+
         if (videos.length >= 1) {
-            setClickedVideo(videos[0]);
+            let isClickedVideoInVideos = -1;
+            if (clickedVideo) {
+                isClickedVideoInVideos = videos.findIndex(video => video.ID === clickedVideo.ID);
+            }
+            if (isClickedVideoInVideos === -1) {
+                setClickedVideo(videos[0]);
+            }
         }
 
         if (videos.length === 0) {
