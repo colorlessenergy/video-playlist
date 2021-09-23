@@ -97,6 +97,7 @@ export default function Home() {
                             id="videoLink"
                             onChange={ handleVideoLinkInputChange }
                             value={ videoLink }
+                            autoComplete="off"
                             placeholder="video link" />
                     </div>
                     <button className="add-video-link-button">
