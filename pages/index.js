@@ -15,8 +15,15 @@ export default function Home() {
     useEffect(() => {
         const videos = getVideosFromLocalStorage();
         setVideos(videos);
+
         if (videos.length >= 1) {
-            setClickedVideo(videos[0]);
+            let isClickedVideoInVideos = -1;
+            if (clickedVideo) {
+                isClickedVideoInVideos = videos.findIndex(video => video.ID === clickedVideo.ID);
+            }
+            if (isClickedVideoInVideos === -1) {
+                setClickedVideo(videos[0]);
+            }
         }
 
         if (videos.length === 0) {
@@ -97,6 +104,7 @@ export default function Home() {
                             id="videoLink"
                             onChange={ handleVideoLinkInputChange }
                             value={ videoLink }
+                            autoComplete="off"
                             placeholder="video link" />
                     </div>
                     <button className="add-video-link-button">
@@ -119,7 +127,7 @@ export default function Home() {
                 ) : (null) }
                 { clickedVideo ? ( 
                 <Fragment>
-                    <div className="flex justify-content-between align-items-center mb-1">
+                    <div className="flex justify-content-between align-items-center mb-1 mt-1">
                         { clickedVideo.website === 'YouTube' ? (
                             <Image
                                 src="/youtube.svg"
@@ -155,7 +163,7 @@ export default function Home() {
                                 <div className="text-right">
                                     <button
                                         onClick={ () => handleRemoveVideo(video.ID) }
-                                        className="button-red">
+                                        className="button-red brt-1">
                                         x
                                     </button>
                                 </div>

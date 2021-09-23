@@ -1,12 +1,15 @@
 @use 'base';
 @use 'utilities';
 @use 'module';
+@use 'variables' as *;
 
 html,
 body {
   padding: 0;
   margin: 0;
 
+  background-color: $black;
+  color: $white;
   font-family: "Open Sans", sans-serif;
 }
 
